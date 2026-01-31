@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: fayda-id-generator
+    env: python
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      sudo apt-get update
+      sudo apt-get install -y tesseract-ocr
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
